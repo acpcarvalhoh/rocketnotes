@@ -45,5 +45,18 @@ export const Profile = styled.div`
 
 
 
-
 `
+
+export const Logout = styled.button`
+    background: none;
+    border: none;
+    color:  ${({ theme }) => theme.COLORS.ORANGE};
+
+    >svg{
+        height: 2.5rem;
+        width: 2.5rem;
+    }
+    
+`
+
+
