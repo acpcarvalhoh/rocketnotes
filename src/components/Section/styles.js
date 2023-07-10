@@ -2,15 +2,15 @@ import { styled } from "styled-components";
 
 
 export const Container = styled.section`
-    margin: 56px 0 28px;
-    border: 2px solid red;
+    margin: 28px 0;
+    
 
     > h2{
         border-bottom-width: 1px;  
         border-bottom-style: solid;
         border-bottom-color: ${({ theme }) => theme.COLORS.BACKGROUND_700};
         padding-bottom: 1.6rem;
-        margin-bottom: 2.4rem;
+        margin-bottom: 2.8rem;
 
         
         color: ${({ theme }) => theme.COLORS.GRAY_100};

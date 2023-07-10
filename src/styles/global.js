@@ -42,4 +42,8 @@ export default createGlobalStyle`
        filter: brightness(0.9);
     }
 
+    ul{
+        list-style-type: none;
+    }
+
 `;
