@@ -62,6 +62,7 @@ export const Content = styled.div`
   padding: 0 6.4rem;
   overflow-y: auto;
 
+
 `
 
 export const NewNote = styled.button`

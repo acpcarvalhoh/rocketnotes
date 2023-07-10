@@ -46,4 +46,27 @@ export default createGlobalStyle`
         list-style-type: none;
     }
 
+
+     
+  ::-webkit-scrollbar {
+    width: 10px; 
+    
+  }
+
+  ::-webkit-scrollbar-track {
+    background: ${({ theme }) => theme.COLORS.BACKGROUND_800};
+    border-radius: 6px;
+    
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: ${({ theme }) => theme.COLORS.GRAY_300};
+    border-radius: 6px;
+    
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+
 `;
