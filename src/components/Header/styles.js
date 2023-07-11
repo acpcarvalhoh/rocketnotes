@@ -1,5 +1,8 @@
 import styled from "styled-components"
 
+import { Link } from "react-router-dom";
+
+
 export const Container = styled.header`
     grid-area: header;
     height: 10.5rem;
@@ -16,7 +19,7 @@ export const Container = styled.header`
 
 `
 
-export const Profile = styled.div`
+export const Profile = styled(Link)`
     display: flex;
     align-items: center;
     gap: 1.6rem;
@@ -34,7 +37,7 @@ export const Profile = styled.div`
 
         span{
             font-size: 1.4rem;
-            color:  ${({ theme }) => theme.COLORS.GREY_100};
+            color:  ${({ theme }) => theme.COLORS.WHITE};
         }
 
         strong{

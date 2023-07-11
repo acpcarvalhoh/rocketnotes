@@ -9,6 +9,7 @@ import { Section } from "../../components/Section";
 
 
 
+
 export function Home(){
     return(
         <Container>
@@ -41,8 +42,9 @@ export function Home(){
               </Section>
             </Content>
 
-            <NewNote>
+            <NewNote to="/new">
               <FiPlus/>
+
               Criar nota
             </NewNote>
         </Container>
