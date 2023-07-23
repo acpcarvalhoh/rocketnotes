@@ -11,13 +11,13 @@ import { userAuth } from "../../hooks/auth";
 import { Container, Form, Background} from "./styles";
 
 export function SignIn(){
-    const { SignIn } = userAuth();
+    const { signIn } = userAuth();
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
     function handleSignIn(){
-      SignIn(email, password)
+      signIn(email, password)
 
     };
 
@@ -31,7 +31,7 @@ export function SignIn(){
 
           <Input 
             placeholder="e-mail"
-            type="mail"
+            type="text"
             icon={FiMail}
             onChange={e => setEmail(e.target.value)}
           />
