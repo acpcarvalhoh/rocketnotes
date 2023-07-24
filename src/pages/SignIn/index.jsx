@@ -8,6 +8,7 @@ import { useState } from "react";
 
 import { Link } from "react-router-dom";
 import { userAuth } from "../../hooks/auth";
+
 import { Container, Form, Background} from "./styles";
 
 export function SignIn(){
@@ -17,7 +18,7 @@ export function SignIn(){
     const [password, setPassword] = useState("")
 
     function handleSignIn(){
-      signIn(email, password)
+      signIn({email, password})
 
     };
 

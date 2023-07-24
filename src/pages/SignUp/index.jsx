@@ -15,6 +15,9 @@ export function SignUp(){
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+
+  
+
   const navigate = useNavigate();
   
   function handleSignUp(){
