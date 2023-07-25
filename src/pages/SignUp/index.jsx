@@ -16,7 +16,6 @@ export function SignUp(){
   const [password, setPassword] = useState("");
 
 
-  
 
   const navigate = useNavigate();
   
