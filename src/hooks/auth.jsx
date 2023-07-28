@@ -45,14 +45,20 @@ function AuthProvider({children}){
     };
 
     async function updateProfile({user}){
+
+        
        try{
         
             const response = await api.put("/users", {user})
+
             localStorage.setItem("@rocketnotes:user", JSON.stringify(user))
 
             setData({user, token: data.token})
 
-            console.log(response)
+            alert("Dados atualizados!!!")
+
+            console.log(response.data)
+            
 
         }catch(error){
             if(error.response){
