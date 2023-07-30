@@ -3,9 +3,15 @@ import { RiShutDownLine } from "react-icons/ri"
 import { userAuth } from "../../hooks/auth";
 import { useNavigate } from "react-router-dom";
 
-export function Header(){
+import avatarPlaceholder  from "../../assets/avatar_placeholder.svg"
+import { api } from "../../services/api";
 
-  const { signOut } = userAuth();
+export function Header(){
+  
+  const { signOut, user } = userAuth();
+
+  const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder;
+
   const navigation = useNavigate();
 
   function HandleSignOut(){
@@ -17,11 +23,11 @@ export function Header(){
   return(
     <Container>
       <Profile to="/profile">
-          <img src="https://github.com/acpcarvalhoh.png" alt="imgem do usuário" />
+          <img src={avatarUrl} alt={user.name} />
 
           <div>
             <span>Bem vindo,</span>
-            <strong>Adão Carvalho</strong>  
+            <strong>{user.name}</strong>  
           </div>
       </Profile>
 

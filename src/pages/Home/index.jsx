@@ -20,7 +20,7 @@ export function Home(){
             <Header/>
 
             <Menu>
-                <li><ButtonText title="Todos" isActive/></li>
+                <li><ButtonText title="Todos" $isactive/></li>
                 <li><ButtonText title="React"/></li>
                 <li><ButtonText title="NodeJS"/></li>
             </Menu>

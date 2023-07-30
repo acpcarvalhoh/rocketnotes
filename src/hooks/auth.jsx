@@ -44,10 +44,18 @@ function AuthProvider({children}){
 
     };
 
-    async function updateProfile({user}){
+    async function updateProfile({user, avatarFile}){ 
+        try{
 
-        
-       try{
+            if(avatarFile){ // se existe um arquivo selecionado
+                const fileUploadForm = new FormData();
+
+                fileUploadForm.append("avatar", avatarFile);
+
+                const response = await api.patch("/users/avatar", fileUploadForm);
+
+                user.avatar = response.data.avatar;
+            }
         
             const response = await api.put("/users", {user})
 
@@ -57,19 +65,16 @@ function AuthProvider({children}){
 
             alert("Dados atualizados!!!")
 
-            console.log(response.data)
             
-
         }catch(error){
             if(error.response){
                 alert(error.response.data.message)
                 
             }else{
                 alert("Não foi possível atualizar o perfil")
-                
-                
+               
             }
-       };
+        };
     };
 
 
