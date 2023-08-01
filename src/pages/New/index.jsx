@@ -50,7 +50,7 @@ export function New() {
 
   async function handleNewNote(){
     if(!title.trim() || !links.length || !tags.length){
-      return alert("Preecha todos os campos para cadastar a nota!!!")
+      return alert("Preencha todos os campos para cadastar a nota!!!")
     }
 
     await api.post('/notes', {
