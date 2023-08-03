@@ -6,10 +6,26 @@ import { Tag } from "../../components/Tag";
 import { Button } from "../../components/Button";
 import { ButtonText } from "../../components/ButtonText";
 
-
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { api } from "../../services/api";
 
 export function Details() {
+  const params = useParams();
 
+  const [data, SetData] = useState(null);
+
+  useEffect(() => {
+    async function fetchNotes(){
+      const responde = await api.get(`/notes/${params.id}`);
+
+      console.log(responde.data)
+
+    };
+
+    fetchNotes();
+
+  }, []);
   return (
     <Container>
       <Header/>
