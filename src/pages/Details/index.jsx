@@ -6,57 +6,100 @@ import { Tag } from "../../components/Tag";
 import { Button } from "../../components/Button";
 import { ButtonText } from "../../components/ButtonText";
 
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 
 export function Details() {
   const params = useParams();
+  const navigate = useNavigate();
 
   const [data, SetData] = useState(null);
 
+  function handleBack(){
+    navigate("/")
+  };
+
+  async function deleteNotes(){
+    const comfirm = window.confirm("Tem certeza que quer deletar a nota??");
+
+    if(comfirm){
+      await api.delete(`/notes/${params.id}`);
+      
+      handleBack();
+    };
+    
+  };
+
   useEffect(() => {
     async function fetchNotes(){
-      const responde = await api.get(`/notes/${params.id}`);
+      const response = await api.get(`/notes/${params.id}`);
 
-      console.log(responde.data)
+      SetData(response.data)
+     
 
     };
 
     fetchNotes();
 
   }, []);
+
   return (
     <Container>
       <Header/>
 
 
-      <main>
-        <Content>
-          <ButtonText title="Excluir nota"/>
+      {
+        data && 
+        <main>
+          <Content>
+            <ButtonText onClick={deleteNotes} title="Excluir nota"/>
 
-          <h1>Introdução ao React</h1>
+            <h1>{data.title}</h1>
 
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-          </p>
+            <p>{data.description}</p>
 
-          <Section title="Links Úteis">
-            <Links>
-              <li><a href="#">https://api.github.com/users/acpcarvalhoh</a></li>
-              <li><a href="#">https://api.github.com/users/acpcarvalhoh</a></li>
-            </Links>
-              
-          </Section>
+            <Section title="Links Úteis">
+              <Links>
+                {
+                  data.links && data.links.map(link => (
+                    
+                    <li key={String(link.id)}>
+                      
+                      <a href={link.url} target="_blank">
+                        
+                        {link.url}
+                      </a>
+                    </li>
 
-          <Section title="Marcadores">
-            <Tag title="Express"/>
-            <Tag title="NodeJS"/>
-          </Section>
 
-          <Button title="Voltar"/>
-        </Content>
-      </main>
+                  ))
+                }
+                
+              </Links>
+                
+            </Section>
+
+            {
+              data.tags &&
+              <Section title="Marcadores">
+                {
+                  data.tags.map(tag => (
+                    <Tag
+                      key={String(tag.id)} 
+                      title={tag.name}
+                    />
+
+                  ))
+                  
+                }
+              </Section>
+            }
+
+            <Button onClick={handleBack} title="Voltar"/>
+          </Content>
+        </main>
+      }
     </Container>   
 
    
