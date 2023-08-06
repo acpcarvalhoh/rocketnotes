@@ -1,14 +1,15 @@
 import { useState } from "react";
-import { Container, Form} from "./styles";
+import { Container, Form } from "./styles";
 
 import { Header } from "../../components/Header";
 import { Input} from "../../components/Input";
-import { TextArea} from "../../components/TextArea";
-import { NoteItem} from "../../components/NoteItem";
-import { Section} from "../../components/Section";
-import { Button} from "../../components/Button";
+import { TextArea } from "../../components/TextArea";
+import { NoteItem } from "../../components/NoteItem";
+import { Section } from "../../components/Section";
+import { Button } from "../../components/Button";
+import { ButtonText }  from "../../components/ButtonText";
 
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { api } from "../../services/api";
 
 export function New() {
@@ -20,6 +21,8 @@ export function New() {
 
   const [tags, setTags ] = useState([]);
   const [newTag, setNewTags ] = useState("");
+
+  const navigate = useNavigate();
 
   function handleAddLink(){
     if(newLink === ""){
@@ -61,9 +64,16 @@ export function New() {
     })
 
     alert("Nota cadastrada")
+
+    navigate(-1)
   };
 
+  function handleBack(){
+    navigate(-1)
 
+  };
+
+  
   return (
     <Container>
       <Header/>
@@ -73,11 +83,11 @@ export function New() {
           <header>
             <h1>Criar Nota</h1>
 
-            <Link to="/">
-
-              Voltar
-            </Link>
-            
+            <ButtonText
+              title="Voltar"
+              onClick={handleBack}
+            />
+    
           </header> 
 
           <Input 

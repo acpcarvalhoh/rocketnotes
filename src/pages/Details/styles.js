@@ -42,6 +42,7 @@ export const Content = styled.div`
 
   > button:first-child{
     align-self: flex-end;
+    color: ${({ theme }) => theme.COLORS.GRAY_100};
   }
 
   >h1{

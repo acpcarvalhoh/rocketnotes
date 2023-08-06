@@ -5,10 +5,10 @@ import { Button } from "../../components/Button";
 import avatarPlaceholder  from "../../assets/avatar_placeholder.svg"
 import { api } from "../../services/api";
 
-import { Link } from "react-router-dom";
 import { useState } from "react";
 import { userAuth } from "../../hooks/auth"
 import { Container, Form, Avatar } from "./styles";
+import { useNavigate } from "react-router-dom";
 
 export function Profile(){
   const { user, updateProfile } = userAuth();
@@ -22,6 +22,8 @@ export function Profile(){
 
   const [avatar, setAvatar] = useState(avatarUrl)
   const [avatarFile, setAvatarFile] = useState(null)
+
+  const navigate = useNavigate();
 
 
   async function handleUpdate(){
@@ -46,10 +48,18 @@ export function Profile(){
     setAvatar(imgPreview)
   }
 
+  function handleBack(){
+    navigate(-1)
+  };
+
   return(
     <Container>
       <header>
-        <Link to="/"><FiArrowLeft/></Link>
+
+        <button type="button" onClick={handleBack}>
+          <FiArrowLeft/>
+        </button>
+        
       </header>
 
       <Form>

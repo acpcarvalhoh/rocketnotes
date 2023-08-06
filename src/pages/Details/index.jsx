@@ -17,7 +17,7 @@ export function Details() {
   const [data, SetData] = useState(null);
 
   function handleBack(){
-    navigate("/")
+    navigate(-1)
   };
 
   async function deleteNotes(){
