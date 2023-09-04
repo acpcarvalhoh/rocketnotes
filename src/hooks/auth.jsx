@@ -57,7 +57,7 @@ function AuthProvider({children}){
                 user.avatar = response.data.avatar;
             }
         
-            const response = await api.put("/users", {user})
+            const response = await api.put("/users", user)
 
             localStorage.setItem("@rocketnotes:user", JSON.stringify(user))
 

@@ -27,14 +27,16 @@ export function Profile(){
 
 
   async function handleUpdate(){
-    const user = {
+    const updated = {
       name,
       email, 
       password: new_password,
       old_password: password,
     }
 
-    await updateProfile({user, avatarFile})
+    const userUpadated = Object.assign(user, updated);
+
+    await updateProfile({user: userUpadated, avatarFile})
   
   };
 
@@ -59,7 +61,7 @@ export function Profile(){
         <button type="button" onClick={handleBack}>
           <FiArrowLeft/>
         </button>
-        
+
       </header>
 
       <Form>
